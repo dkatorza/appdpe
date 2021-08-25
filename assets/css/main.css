@@ -1,0 +1,219 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Poppins:wght@200&display=swap');
+
+body {
+    background-color: rgb(253, 253, 253);
+    
+}
+
+.book-app h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    color: rgb(255, 13, 93);
+}
+
+.book-filter{
+    margin-bottom: 3rem;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-filter button{
+    font-family: 'Poppins', sans-serif;
+    color:rgb(29, 29, 29);
+    font-size: 1.5rem;
+    background-color:rgb(255, 13, 93);
+    border: none;
+    width: 6rem;
+    height: 2.5rem;
+
+}
+
+.book-filter input{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 8rem;
+    height: 2.5rem;
+    margin-right: 5px;
+}
+
+.book-filter label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 8rem;
+    height: 2.5rem;
+    margin-right: 5px;
+}
+
+
+.book-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+}
+.book-preview {
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    width: 250px;
+    padding: 5px;
+    text-align: center;
+}
+.book-preview img {
+    width: 290px;
+}
+
+.sale-badge{
+    background-image: url(/assets/img/pngegg.png);
+    z-index: 99;
+    width: 120px;
+    position:absolute;
+}
+
+.red{
+color: red;
+}
+
+.green{
+    color: green;
+}
+
+.black{
+    color: black;
+}
+
+
+@media (min-width:906px){
+    .book-filter{
+        flex-direction: row;
+    }
+    
+    
+}
+
+
+/* list-helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(253, 253, 253);
+    
+}
+
+.keep-app h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    color: rgb(255, 13, 93);
+}
+
+.keep-filter{
+    margin-bottom: 3rem;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keep-filter button{
+    font-family: 'Poppins', sans-serif;
+    color:rgb(29, 29, 29);
+    font-size: 1.5rem;
+    background-color:rgb(255, 13, 93);
+    border: none;
+    width: 6rem;
+    height: 2.5rem;
+
+}
+
+.keep-filter input{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 8rem;
+    height: 2.5rem;
+    margin-right: 5px;
+}
+
+.keep-filter label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    width: 8rem;
+    height: 2.5rem;
+    margin-right: 5px;
+}
+
+
+.keep-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+}
+.keep-preview {
+    width: 100%;
+    background-color: rgb(241, 161, 255);
+    font-family: 'Lato', sans-serif;
+    max-width: 325px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid;
+    border-color: rgb(255, 169, 251);
+    border-radius: 1rem;
+}
+.keep-preview img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.sale-badge{
+    background-image: url(/assets/img/pngegg.png);
+    z-index: 99;
+    width: 120px;
+    position:absolute;
+}
+
+.red{
+color: red;
+}
+
+.green{
+    color: green;
+}
+
+.black{
+    color: black;
+}
+
+
+@media (min-width:906px){
+    .keep-filter{
+        flex-direction: row;
+    }
+    
+    
+}
+
