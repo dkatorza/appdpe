@@ -209,6 +209,23 @@ color: red;
 }
 
 
+.title-home{
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-imgs{
+    display: flex;
+    justify-content: center;
+    ;
+}
+
+.logo-img{
+    width: 250px;
+    height: 250px;
+}
+
 @media (min-width:906px){
     .keep-filter{
         flex-direction: row;

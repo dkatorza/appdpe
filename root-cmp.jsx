@@ -1,6 +1,7 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 
+import { NavBar } from './assets/cmps/NavBar.jsx';
 import { MailApp } from './js/apps/mail/pages/MailApp.jsx';
 import { KeepApp } from './js/apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './js/apps/book/pages/BookApp.jsx'
@@ -12,6 +13,7 @@ export function App() {
     return (
         <Router>
             <header >
+            <NavBar />
             </header>
             <main className="container">
                 <section >

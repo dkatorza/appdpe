@@ -9,18 +9,18 @@ export function AppHome() {
             <section className="logo-imgs">
                 <Link to={`/mail`}>
                     <div className="logo-container">
-                        <img className="logo-img" src="" alt="mail" />
+                        <img className="logo-img" src="./assets/img/mail.png" alt="mail" />
                     </div>
                 </Link>
                 <Link to={`/keep`}>
                     <div className="logo-container">
-                        <img className="logo-img" src="" alt="keep" />
+                        <img className="logo-img" src="./assets/img/keep.png" alt="keep" />
                     </div>
                 </Link>
 
                 <Link to={`/book`}>
                     <div className="logo-container">
-                        <img className="logo-img" src="" alt="book" />
+                        <img className="logo-img" src="./assets/img/books.png" alt="book" />
                     </div>
                 </Link>
 
