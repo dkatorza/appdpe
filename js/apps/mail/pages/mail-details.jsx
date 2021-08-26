@@ -33,10 +33,10 @@ export class MailDetails extends React.Component {
         const mail = this.state.mail
         if (!mail) return <h4>loading...</h4>
         return (
-            <div className="mail-details flex scale-in-hor-right">
+            <div className="mail-details ">
                 <SideBar onChangeSection={this.changeMailSection}></SideBar>
                 <div className="mail-data-container">
-                    <div className="keep-btn-su-container flex space-between align-center">
+                    <div>
                         <h1>{mail.subject}</h1>
                         {/* <Link to={`/keep/mail?&mail=${mail.body}`}>save as note</Link> */}
                     </div>

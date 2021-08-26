@@ -1,9 +1,9 @@
 export function SideBar(props) {
     return (
-        <nav className={`${props.isMobileMenuOpen ? 'menu-open': ''} side-bar flex column align-center`}>
-            <div className="side-bar-content flex column space-evenely">
+        <nav>
+            <div className="side-bar-content">
                 <button className="compose-btn" onClick={() => props.openCompose()}><img src="js\apps\mail\assets\compose-icon.png" />Compose</button>
-                <section className="side-main-nav flex column space-between align-center ">
+                <section className="side-main-nav ">
                     <div className="inbox" onClick={() => props.onChangeSection('income')}>
                         <span> <i className="fas fa-inbox"></i> </span>
                     Inbox({props.unreadMailAmount})

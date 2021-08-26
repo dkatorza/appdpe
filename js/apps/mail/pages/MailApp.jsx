@@ -78,7 +78,7 @@ export class MailApp extends React.Component {
   submitCompose = (newMail) => {
     mailService.sendMail(newMail)
       .then(() => {
-        eventBus.emit('notify', { msg: 'The mail have been sent!', type: 'success' })
+        eventBus.emit('notify', { msg: 'Mail have been sent!', type: 'success' })
         this.closeCompose()
         this.loadMails()
       })
@@ -124,7 +124,7 @@ export class MailApp extends React.Component {
     const mails = this.mailsToShow()
     if (!mails) return <h2> loading...</h2> //add svg loader
     return (
-      <section className="main-mail scale-in-hor-right flex">
+      <section className="main-mail">
         {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
         <SideBar openCompose={this.openCompose} isMobileMenuOpen={this.state.isMobileMenuOpen} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
         <div className="mails-container">

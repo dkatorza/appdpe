@@ -15,7 +15,7 @@ export function MailPreview({ mail, onUpdateMail }) {
                     {!mail.isStarred && <i className="fav-star far fa-star"></i>}
                 </button>
                 <div><h3 className="address-preview">{mail.address}</h3></div>
-                <div className="sub-body-container flex space-between flex-1">
+                <div className="sub-body-container">
                     <div><h3>{mail.subject}</h3></div>
                     <div><p>{mail.body}</p></div>
                 </div>
