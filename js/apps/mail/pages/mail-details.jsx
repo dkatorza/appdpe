@@ -31,7 +31,7 @@ export class MailDetails extends React.Component {
 
     render() {
         const mail = this.state.mail
-        if (!mail) return <h4>loading...</h4>
+        if (!mail) return <h4>loading...</h4> // add here svg loader
         return (
             <div className="mail-details ">
                 <SideBar onChangeSection={this.changeMailSection}></SideBar>

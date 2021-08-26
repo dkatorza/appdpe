@@ -14,8 +14,7 @@ export class MailApp extends React.Component {
     isComposeShown: false,
     unreadMailAmount: '',
     filterBy: '',
-    filterStatus: '',
-    keepToMail: null
+    filterStatus: ''
   }
 
   componentDidMount() {
@@ -45,10 +44,10 @@ export class MailApp extends React.Component {
     mailService.updateMail(mailId, paramToChange, isUnreadClick)
       .then(() => {
         if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
-          eventBus.emit('notify', { msg: 'mail have been removed' })
+          // eventBus.emit('notify', { msg: 'Mail have been removed' })
         }
         else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
-          eventBus.emit('notify', { msg: 'Moved to trash' })
+          // eventBus.emit('notify', { msg: 'Moved to trash' })
         }
         this.loadMails()
 
@@ -76,7 +75,7 @@ export class MailApp extends React.Component {
     }
     mailService.moveToDrafts(draft)
       .then(() => {
-        eventBus.emit('notify', { msg: 'Saved to drafts!', type: 'success' })
+        // eventBus.emit('notify', { msg: ' Mail saved to drafts.', type: 'success' })
         this.closeCompose()
         this.loadMails()
       })
@@ -86,7 +85,7 @@ export class MailApp extends React.Component {
   submitCompose = (newMail) => {
     mailService.sendMail(newMail)
       .then(() => {
-        eventBus.emit('notify', { msg: 'Mail have been sent!', type: 'success' })
+        // eventBus.emit('notify', { msg: 'Mail have been sent', type: 'success' })
         this.closeCompose()
         this.loadMails()
       })
@@ -99,16 +98,6 @@ export class MailApp extends React.Component {
     this.setState({ mailsType: mailSection })
     
   }
-
-  
-
-  setUnreadAmount = () => {
-    mailService.countUnreadMails()
-      .then(counter => {
-        this.setState({ unreadMailAmount: counter })
-      })
-  }
-
 
   mailsToShow() {
     const currMails = this.state.mails
@@ -125,6 +114,16 @@ export class MailApp extends React.Component {
     return mails;
   }
 
+
+  setUnreadAmount = () => {
+    mailService.countUnreadMails()
+      .then(counter => {
+        this.setState({ unreadMailAmount: counter })
+      })
+  }
+
+
+ 
 
   render() {
     const mails = this.mailsToShow()
