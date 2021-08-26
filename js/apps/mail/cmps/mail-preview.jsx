@@ -1,4 +1,3 @@
-
 const { Link } = ReactRouterDOM
 
 export function MailPreview({ mail, onUpdateMail }) {

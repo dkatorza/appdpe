@@ -6,7 +6,7 @@ export const mailService = {
     sendMail,
     getMailById,
     updateMail,
-    sendToDrafts,
+    moveToDrafts,
     countUnreadMails,
     query
 }
@@ -284,7 +284,7 @@ function getIdxById(mailId) {
         })
 }
 
-function sendToDrafts(draft) {
+function moveToDrafts(draft) {
     const newDraft = {
         id: utilsService.makeId(),
         type: 'draft',

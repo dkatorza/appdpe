@@ -14,14 +14,22 @@ export class MailApp extends React.Component {
     isComposeShown: false,
     unreadMailAmount: '',
     filterBy: '',
-    filterRatio: '',
+    filterStatus: '',
     keepToMail: null
   }
 
   componentDidMount() {
 
+    const mailSection = new URLSearchParams(window.location.href).get('section')
+
+    if (mailSection) {
+      this.setState({ mailsType: mailSection })
+    }
+    else {
+      this.setState({ mailsType: 'income' })
+    }
     this.loadMails();
-    
+
   }
 
   loadMails = () => {
@@ -50,7 +58,7 @@ export class MailApp extends React.Component {
 
   setFilter = (ev) => {
     if (ev.target.type === 'search') this.setState({ filterBy: ev.target.value })
-    if (ev.target.type === 'radio') this.setState({ filterRatio: ev.target.value })
+    if (ev.target.type === 'radio') this.setState({ filterStatus: ev.target.value })
   }
 
   openCompose = () => {
@@ -61,12 +69,12 @@ export class MailApp extends React.Component {
     this.setState({ isComposeShown: false })
   }
 
-  sendToDrafts = (draft) => {
+  moveToDrafts = (draft) => {
     if (!draft.address && !draft.subject && !draft.body) {
       this.closeCompose();
       return
     }
-    mailService.sendToDrafts(draft)
+    mailService.moveToDrafts(draft)
       .then(() => {
         eventBus.emit('notify', { msg: 'Saved to drafts!', type: 'success' })
         this.closeCompose()
@@ -89,12 +97,10 @@ export class MailApp extends React.Component {
     this.props.history.push(`/mail?&section=${section}`)
     const mailSection = new URLSearchParams(window.location.href).get('section')
     this.setState({ mailsType: mailSection })
-    if (this.state.isMobileMenuOpen) this.toggleMobileMenu();
+    
   }
 
-  toggleMobileMenu = () => {
-    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
-  }
+  
 
   setUnreadAmount = () => {
     mailService.countUnreadMails()
@@ -110,10 +116,10 @@ export class MailApp extends React.Component {
     if (this.state.mailsType === 'starred') mailsToShow = currMails.filter(mail => mail.isStarred)
     if (!mailsToShow) return
     let mails = mailsToShow.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
-    if (this.state.filterRatio === 'read') {
+    if (this.state.filterStatus === 'read') {
       mails = mailsToShow.filter(mail => mail.isRead)
     }
-    else if (this.state.filterRatio === 'unread') {
+    else if (this.state.filterStatus === 'unread') {
       mails = mailsToShow.filter(mail => !mail.isRead)
     }
     return mails;
@@ -125,12 +131,11 @@ export class MailApp extends React.Component {
     if (!mails) return <h2> loading...</h2> //add svg loader
     return (
       <section className="main-mail">
-        {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
-        <SideBar openCompose={this.openCompose} isMobileMenuOpen={this.state.isMobileMenuOpen} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
+        <SideBar openCompose={this.openCompose} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
         <div className="mails-container">
-          <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu} />
+          <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} />
           <MailList mails={mails} onUpdateMail={this.updateMail} />
-          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} keepToMail={this.state.keepToMail} onSendToDrafts={this.sendToDrafts} />}
+          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} keepToMail={this.state.keepToMail} onSendToDrafts={this.moveToDrafts} />}
         </div>
       </section>
     )
