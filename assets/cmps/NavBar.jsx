@@ -10,7 +10,7 @@ function _NavBar(props) {
 
     return (
         <section className="main-nav">
-            <div className="logo">AppSus </div>
+            <div className="logo"><img src="assets\img\appsuslogo.png" alt="APPSUS LOGO" /> </div>
             <div className="nav-links">
 
                 <NavLink activeClassName='my-active' exact to="/">Home</NavLink>

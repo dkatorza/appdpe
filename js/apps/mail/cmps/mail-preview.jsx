@@ -4,7 +4,7 @@ export function MailPreview({ mail, onUpdateMail }) {
 
     return (
         <Link to={`/mail/${mail.id}`} onClick={() => onUpdateMail(mail.id, 'setRead')} >
-            <section className={`mail-preview ${mail.isRead ? 'readen' : ''}`}>
+            <section className={`mail-preview flex space-between align-center ${mail.isRead ? 'readen' : ''}`}>
                 <button className="star-btn" onClick={(ev) => {
                     ev.preventDefault()
                     ev.stopPropagation()
@@ -14,7 +14,7 @@ export function MailPreview({ mail, onUpdateMail }) {
                     {!mail.isStarred && <i className="fav-star far fa-star"></i>}
                 </button>
                 <div><h3 className="address-preview">{mail.address}</h3></div>
-                <div className="sub-body-container">
+                <div className="sub-body-container flex space-between flex-1 ">
                     <div><h3>{mail.subject}</h3></div>
                     <div><p>{mail.body}</p></div>
                 </div>
@@ -29,9 +29,7 @@ export function MailPreview({ mail, onUpdateMail }) {
                     <button onClick={(ev) => {
                         ev.preventDefault()
                         ev.stopPropagation()
-                        onUpdateMail(mail.id, 'setRead', false)
-                    }
-                    }><i className="fas fa-envelope"></i> </button>
+                        onUpdateMail(mail.id, 'setRead', false)} }><i className="fas fa-envelope"></i> </button>
                 </div>
             </section>
         </Link>

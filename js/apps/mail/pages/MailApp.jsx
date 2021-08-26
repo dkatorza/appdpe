@@ -129,12 +129,12 @@ export class MailApp extends React.Component {
     const mails = this.setMailsToDisplay()
     if (!mails) return <h2> loading...</h2> //add svg loader
     return (
-      <section className="main-mail">
+      <section className="main-mail flex">
         <SideBar openCompose={this.openCompose} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
         <div className="mails-container">
           <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} />
           <MailList mails={mails} onUpdateMail={this.updateMail} />
-          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} keepToMail={this.state.keepToMail} onSendToDrafts={this.moveToDrafts} />}
+          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose}  onSendToDrafts={this.moveToDrafts} />}
         </div>
       </section>
     )

@@ -2,10 +2,9 @@ const { Link } = ReactRouterDOM
 
 export function AppHome() {
 
-    console.log('test');
     return (
         <div className="main-home">
-            <div className="title-home">Welcome To AppSus</div>
+            <div className="title-home"><img src="assets\img\appsus-full-logo.png" alt="APPSUS" /></div>
             <section className="logo-imgs">
                 <Link to={`/mail`}>
                     <div className="logo-container">

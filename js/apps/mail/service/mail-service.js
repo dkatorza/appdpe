@@ -79,9 +79,9 @@ var gMails = [
         id: utilsService.makeId(),
         type: 'income',
         address: 'Dan',
-        subject: `After years of global conflict, a glimmer of hope has revealed itself. Play as a select group of soldiers hailing from around the world as they come together to turn the tides of war, changing history forever.
+        subject:'Pick up!',
+        body:  `After years of global conflict, a glimmer of hope has revealed itself. Play as a select group of soldiers hailing from around the world as they come together to turn the tides of war, changing history forever.
         In Call of Duty®: Vanguard, players will rise to meet the world's gravest threat and experience WWII through the eyes of its heroes while fighting across four theatres of war on 5 November.`,
-        body: 'Pick up!',
         isStarred: true,
         isRead: true,
         sentAt: 1551133930593
