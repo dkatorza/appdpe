@@ -3,7 +3,7 @@ export function MailFilter(props) {
     return (
         <React.Fragment>
             <section className="mail-filter">
-                <input type="search" placeholder="serach" onChange={(ev) => {
+                <input type="search" name="searchfilter" id="search-filter" placeholder="serach" onChange={(ev) => {
                     props.onSetFilter(ev)
                 }} />
                 <div className="radio-sort">
