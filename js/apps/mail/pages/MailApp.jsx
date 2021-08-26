@@ -13,7 +13,7 @@ export class MailApp extends React.Component {
     mailsType: '',
     isComposeShown: false,
     unreadMailAmount: '',
-    filterBy: '', // if time permits add option to filter also by subject and body content
+    filterBy: '', // if time permits add option to filter also by subject/ body content /date
     filterStatus: ''
   }
 
