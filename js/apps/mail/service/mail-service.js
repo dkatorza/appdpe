@@ -285,7 +285,7 @@ function getIdxById(mailId) {
 }
 
 function moveToDrafts(draft) {
-    const newDraft = {
+    const criteriaNewDraft = {
         id: utilsService.makeId(),
         type: 'draft',
         address: draft.address,
@@ -297,7 +297,7 @@ function moveToDrafts(draft) {
     }
     return query()
         .then(mails => {
-            mails.push(newDraft);
+            mails.push(criteriaNewDraft);
             storageService.saveToStorage(KEY, mails);
             return Promise.resolve();
         })
@@ -305,7 +305,7 @@ function moveToDrafts(draft) {
 
 
 function sendMail(mail) {
-    const newMailIncome = {
+    const criteriaNewMailIncome = {
         id: utilsService.makeId(),
         type: 'income',
         address: 'Dan',
@@ -316,7 +316,7 @@ function sendMail(mail) {
         sentAt: Date.now()
     }
 
-    const newMailOutcome = {
+    const criteriaNewMailOutcome = {
         id: utilsService.makeId(),
         type: 'outcome',
         address: mail.address,
@@ -329,8 +329,8 @@ function sendMail(mail) {
 
     return query()
         .then(mails => {
-            mails.unshift(newMailIncome);
-            mails.unshift(newMailOutcome);
+            mails.unshift(criteriaNewMailIncome);
+            mails.unshift(criteriaNewMailOutcome);
             storageService.saveToStorage(KEY, mails);
             return Promise.resolve();
         })

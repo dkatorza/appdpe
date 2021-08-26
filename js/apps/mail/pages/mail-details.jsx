@@ -38,7 +38,6 @@ export class MailDetails extends React.Component {
                 <div className="mail-data-container">
                     <div>
                         <h1>{mail.subject}</h1>
-                        {/* <Link to={`/keep/mail?&mail=${mail.body}`}>save as note</Link> */}
                     </div>
                     <h3>Sender: {mail.address}</h3>
                     <p>{mail.body}</p>

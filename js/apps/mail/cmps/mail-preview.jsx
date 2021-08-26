@@ -4,7 +4,7 @@ export function MailPreview({ mail, onUpdateMail }) {
 
     return (
         <Link to={`/mail/${mail.id}`} onClick={() => onUpdateMail(mail.id, 'setRead')} >
-            <section className={`mail-preview flex space-between align-center ${mail.isRead ? 'readen' : ''}`}>
+            <section className={`mail-preview ${mail.isRead ? 'readen' : ''}`}>
                 <button className="star-btn" onClick={(ev) => {
                     ev.preventDefault()
                     ev.stopPropagation()
