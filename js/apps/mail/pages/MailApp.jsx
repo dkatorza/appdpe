@@ -95,7 +95,7 @@ export class MailApp extends React.Component {
     this.props.history.push(`/mail?&section=${section}`)
     const mailSection = new URLSearchParams(window.location.href).get('section')
     this.setState({ mailsType: mailSection })
-    
+
   }
 
   setMailsToDisplay() {
@@ -104,9 +104,11 @@ export class MailApp extends React.Component {
     if (this.state.mailsType === 'starred') setMailsToDisplay = currMails.filter(mail => mail.isStarred)
     if (!setMailsToDisplay) return
     let mails = setMailsToDisplay.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
-    if (this.state.filterStatus ==='newdate') mails = setMailsToDisplay.sort((a,b) => b.sentAt-a.sentAt)
-    if (this.state.filterStatus ==='olddate') mails = setMailsToDisplay.sort((a,b) => a.sentAt-b.sentAt)
-    
+    if (this.state.filterStatus === 'newdate') mails = setMailsToDisplay.sort((a, b) => b.sentAt - a.sentAt)
+    if (this.state.filterStatus === 'olddate') mails = setMailsToDisplay.sort((a, b) => a.sentAt - b.sentAt)
+    if (this.state.filterStatus === 'subject') mails = setMailsToDisplay.sort((a, b) => a.subject.localeCompare(b.subject))
+
+
     if (this.state.filterStatus === 'read') {
       mails = setMailsToDisplay.filter(mail => mail.isRead)
     }
@@ -125,7 +127,7 @@ export class MailApp extends React.Component {
   }
 
 
- 
+
 
   render() {
     const mails = this.setMailsToDisplay()
@@ -136,7 +138,7 @@ export class MailApp extends React.Component {
         <div className="mails-container">
           <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} />
           <MailList mails={mails} onUpdateMail={this.updateMail} />
-          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose}  onSendToDrafts={this.moveToDrafts} />}
+          {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.moveToDrafts} />}
         </div>
       </section>
     )
