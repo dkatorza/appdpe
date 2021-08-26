@@ -19,10 +19,10 @@ export class MailDetails extends React.Component {
             .then(mail => this.setState({ mail }))
     }
 
-    toggleLongText = () => {
-        const isLongTxtShown = !this.state.isLongTxtShown
-        this.setState({ isLongTxtShown })
-    }
+    // toggleLongText = () => {
+    //     const isLongTxtShown = !this.state.isLongTxtShown
+    //     this.setState({ isLongTxtShown })
+    // }
 
     changeMailSection = (section) => {
         this.props.history.push(`/mail?&section=${section}`)

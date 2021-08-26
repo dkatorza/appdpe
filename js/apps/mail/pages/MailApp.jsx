@@ -14,7 +14,7 @@ export class MailApp extends React.Component {
     isComposeShown: false,
     unreadMailAmount: '',
     filterBy: '', // if time permits add option to filter also by subject/ body content /date
-    filterStatus: ''
+    filterStatus: 'All'
   }
 
   componentDidMount() {
@@ -40,20 +40,20 @@ export class MailApp extends React.Component {
   }
 
 
-  updateMail = (mailId, paramToChange, isUnreadClick) => {
-    mailService.updateMail(mailId, paramToChange, isUnreadClick)
-      .then(() => {
-        if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
-          // eventBus.emit('notify', { msg: 'Mail have been removed' })
-        }
-        else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
-          // eventBus.emit('notify', { msg: 'Moved to trash' })
-        }
-        this.loadMails()
+  // updateMail = (mailId, paramToChange, isUnreadClick) => {
+  //   mailService.updateMail(mailId, paramToChange, isUnreadClick)
+  //     .then(() => {
+  //       if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
+  //         // eventBus.emit('notify', { msg: 'Mail have been removed' })
+  //       }
+  //       else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
+  //         // eventBus.emit('notify', { msg: 'Moved to trash' })
+  //       }
+  //       this.loadMails()
 
-      })
+  //     })
 
-  }
+  // }
 
   setFilter = (ev) => {
     if (ev.target.type === 'search') this.setState({ filterBy: ev.target.value })
@@ -73,9 +73,9 @@ export class MailApp extends React.Component {
       this.closeCompose();
       return
     }
+
     mailService.moveToDrafts(draft)
       .then(() => {
-        // eventBus.emit('notify', { msg: ' Mail saved to drafts.', type: 'success' })
         this.closeCompose()
         this.loadMails()
       })
@@ -85,7 +85,6 @@ export class MailApp extends React.Component {
   submitCompose = (newMail) => {
     mailService.sendMail(newMail)
       .then(() => {
-        // eventBus.emit('notify', { msg: 'Mail have been sent', type: 'success' })
         this.closeCompose()
         this.loadMails()
       })
@@ -105,6 +104,9 @@ export class MailApp extends React.Component {
     if (this.state.mailsType === 'starred') setMailsToDisplay = currMails.filter(mail => mail.isStarred)
     if (!setMailsToDisplay) return
     let mails = setMailsToDisplay.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
+    if (this.state.filterStatus ==='newdate') mails = setMailsToDisplay.sort((a,b) => b.sentAt-a.sentAt)
+    if (this.state.filterStatus ==='olddate') mails = setMailsToDisplay.sort((a,b) => a.sentAt-b.sentAt)
+    
     if (this.state.filterStatus === 'read') {
       mails = setMailsToDisplay.filter(mail => mail.isRead)
     }

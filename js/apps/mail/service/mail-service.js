@@ -148,7 +148,7 @@ var gMails = [
         body: `Besiege the fortified City of Paris and fight fierce new enemies.The Siege of Paris is included in your Season Pass.`,
         isStarred: false,
         isRead: false,
-        sentAt: 1551133940593
+        sentAt: 1555133930294
     },
     {
         id: utilsService.makeId(),

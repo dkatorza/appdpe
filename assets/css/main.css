@@ -320,6 +320,14 @@ button {
 color: tomato;
 }
 
+.label-date-new{
+    color: rgb(35, 193, 255);
+}
+
+.label-date-old{
+    color:rgb(206, 26, 176)
+}
+
 .mail-filter .radio-sort input {
     box-shadow: none;
 }

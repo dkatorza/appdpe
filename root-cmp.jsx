@@ -17,7 +17,7 @@ export function App() {
             <header >
             <NavBar />
             </header>
-            <main className="container">
+            <main className="main-app-container">
                 <section >
                     <Switch>
                     <Route path="/mail/:mailId" component={MailDetails} />   
