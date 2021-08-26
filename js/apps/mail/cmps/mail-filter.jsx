@@ -2,7 +2,6 @@
 export function MailFilter(props) {
     return (
         <React.Fragment>
-            {/* <button className="mobile-menu-btn" onClick={() => props.onOpenMobileMenu()}> ☰ </button> */}
             <section className="mail-filter">
                 <input type="search" placeholder="serach" onChange={(ev) => {
                     props.onSetFilter(ev)
