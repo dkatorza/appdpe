@@ -99,17 +99,17 @@ export class MailApp extends React.Component {
     
   }
 
-  mailsToShow() {
+  setMailsToDisplay() {
     const currMails = this.state.mails
-    let mailsToShow = currMails.filter(mail => mail.type === this.state.mailsType)
-    if (this.state.mailsType === 'starred') mailsToShow = currMails.filter(mail => mail.isStarred)
-    if (!mailsToShow) return
-    let mails = mailsToShow.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
+    let setMailsToDisplay = currMails.filter(mail => mail.type === this.state.mailsType)
+    if (this.state.mailsType === 'starred') setMailsToDisplay = currMails.filter(mail => mail.isStarred)
+    if (!setMailsToDisplay) return
+    let mails = setMailsToDisplay.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
     if (this.state.filterStatus === 'read') {
-      mails = mailsToShow.filter(mail => mail.isRead)
+      mails = setMailsToDisplay.filter(mail => mail.isRead)
     }
     else if (this.state.filterStatus === 'unread') {
-      mails = mailsToShow.filter(mail => !mail.isRead)
+      mails = setMailsToDisplay.filter(mail => !mail.isRead)
     }
     return mails;
   }
@@ -126,7 +126,7 @@ export class MailApp extends React.Component {
  
 
   render() {
-    const mails = this.mailsToShow()
+    const mails = this.setMailsToDisplay()
     if (!mails) return <h2> loading...</h2> //add svg loader
     return (
       <section className="main-mail">
