@@ -226,6 +226,8 @@ color: red;
     height: 250px;
 }
 
+
+
 @media (min-width:906px){
     .keep-filter{
         flex-direction: row;
