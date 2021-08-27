@@ -100,15 +100,13 @@ export class MailApp extends React.Component {
 
   setMailsToDisplay() {
     const currMails = this.state.mails
-    let setMailsToDisplay = currMails.filter(mail => mail.type === this.state.mailsType)
+    let setMailsToDisplay = currMails.filter(mail => mail.status === this.state.mailsType)
     if (this.state.mailsType === 'starred') setMailsToDisplay = currMails.filter(mail => mail.isStarred)
     if (!setMailsToDisplay) return
     let mails = setMailsToDisplay.filter(mail => mail.address.toLowerCase().includes(this.state.filterBy.toLowerCase()))
     if (this.state.filterStatus === 'newdate') mails = setMailsToDisplay.sort((a, b) => b.sentAt - a.sentAt)
     if (this.state.filterStatus === 'olddate') mails = setMailsToDisplay.sort((a, b) => a.sentAt - b.sentAt)
     if (this.state.filterStatus === 'subject') mails = setMailsToDisplay.sort((a, b) => a.subject.localeCompare(b.subject))
-
-
     if (this.state.filterStatus === 'read') {
       mails = setMailsToDisplay.filter(mail => mail.isRead)
     }
