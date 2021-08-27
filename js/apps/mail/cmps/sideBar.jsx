@@ -1,6 +1,6 @@
 export function SideBar(props) {
     return (
-        <nav class="side-bar flex column align-center">
+        <nav className="side-bar flex column align-center">
             <div className="side-bar-content flex column ">
                 <button className="compose-btn" onClick={() => props.openCompose()}><img src="js\apps\mail\assets\compose-icon.png" />Compose</button>
                 <section className="side-main-nav flex column space-between align-center">

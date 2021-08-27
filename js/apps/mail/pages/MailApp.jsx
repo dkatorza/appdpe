@@ -40,20 +40,20 @@ export class MailApp extends React.Component {
   }
 
 
-  // updateMail = (mailId, paramToChange, isUnreadClick) => {
-  //   mailService.updateMail(mailId, paramToChange, isUnreadClick)
-  //     .then(() => {
-  //       if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
-  //         // eventBus.emit('notify', { msg: 'Mail have been removed' })
-  //       }
-  //       else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
-  //         // eventBus.emit('notify', { msg: 'Moved to trash' })
-  //       }
-  //       this.loadMails()
+  updateMail = (mailId, paramToChange, isUnreadClick) => {
+    mailService.updateMail(mailId, paramToChange, isUnreadClick)
+      .then(() => {
+        if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
+          // eventBus.emit('notify', { msg: 'Mail have been removed' })
+        }
+        else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
+          // eventBus.emit('notify', { msg: 'Moved to trash' })
+        }
+        this.loadMails()
 
-  //     })
+      })
 
-  // }
+  }
 
   setFilter = (ev) => {
     if (ev.target.type === 'search') this.setState({ filterBy: ev.target.value })
