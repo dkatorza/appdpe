@@ -15,7 +15,8 @@ export class MailApp extends React.Component {
     unreadMailAmount: '',
     filterBy: '', 
     filterStatus: 'All',
-    isRead:false
+    isRead:false,
+    isMobileMenuOpen:false
   }
 
   componentDidMount() {
@@ -94,6 +95,7 @@ export class MailApp extends React.Component {
     this.props.history.push(`/mail?&section=${section}`)
     const mailSection = new URLSearchParams(window.location.href).get('section')
     this.setState({ mailsType: mailSection })
+    if (this.state.isMobileMenuOpen) this.toggleMobileMenu();
 
   }
 
@@ -123,6 +125,9 @@ export class MailApp extends React.Component {
       })
   }
 
+  toggleMobileMenu = () => {
+    this.setState({ isMobileMenuOpen: !this.state.isMobileMenuOpen })
+}
 
 
 
@@ -131,9 +136,10 @@ export class MailApp extends React.Component {
     if (!mails) return <h2> loading...</h2> //add svg loader
     return (
       <section className="main-mail flex">
-        <SideBar openCompose={this.openCompose} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} />
+        {this.state.isMobileMenuOpen && <div className="screen" onClick={this.toggleMobileMenu}></div>}
+        <SideBar openCompose={this.openCompose} unreadMailAmount={this.state.unreadMailAmount} onChangeSection={this.changeMailSection} isMobileMenuOpen={this.state.isMobileMenuOpen} />
         <div className="mails-container">
-          <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} />
+          <MailFilter filterBy={this.state.filterBy} onSetFilter={this.setFilter} onOpenMobileMenu={this.toggleMobileMenu}/>
           <MailList mails={mails} onUpdateMail={this.updateMail} />
           {this.state.isComposeShown && <MailCompose onCloseCompose={this.closeCompose} onSubmitCompose={this.submitCompose} onSendToDrafts={this.moveToDrafts} />}
         </div>

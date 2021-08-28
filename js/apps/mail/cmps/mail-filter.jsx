@@ -2,8 +2,9 @@
 export function MailFilter(props) {
     return (
         <React.Fragment>
+            <button className="mobile-menu-btn" onClick={() => props.onOpenMobileMenu()}> <i className="fas fa-bars"></i> </button>
             <section className="mail-filter">
-                <input type="search" name="searchfilter" id="search-filter" placeholder="🔍Serach mail" onChange={(ev) => {
+                <input type="search" name="searchfilter" id="search-filter" placeholder="Serach mail" onChange={(ev) => {
                     props.onSetFilter(ev)
                 }} />
                 <div className="radio-sort">
