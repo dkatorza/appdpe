@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 export function MailPreview({ mail, onUpdateMail }) {
 
     return (
-        <Link to={`/mail/${mail.id}`} onClick={() => onUpdateMail(mail.id, 'setRead')} >
+        <Link to={`/mail/${mail.id}`} onClick={() => onUpdateMail(mail.id,'setRead')} >
             <section className={`mail-preview flex space-between align-center ${mail.isRead ? 'readen' : ''} ${mail.isImportant ? 'important' : ''}`}>
                 <button className="star-btn" onClick={(ev) => {
                     ev.preventDefault()
@@ -33,10 +33,10 @@ export function MailPreview({ mail, onUpdateMail }) {
                     <button onClick={(ev) => {
                         ev.preventDefault()
                         ev.stopPropagation()
-                        onUpdateMail(mail.id, 'setRead', false)
+                        onUpdateMail(mail.id, 'setRead',false)
                     }}><i className={`${mail.isRead ? 'fas fa-envelope-open' : 'fas fa-envelope'}`} ></i>
-
                     </button>
+              
 
                 </div>
             </section>

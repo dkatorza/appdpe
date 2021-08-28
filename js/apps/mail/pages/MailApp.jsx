@@ -14,7 +14,8 @@ export class MailApp extends React.Component {
     isComposeShown: false,
     unreadMailAmount: '',
     filterBy: '', 
-    filterStatus: 'All'
+    filterStatus: 'All',
+    isRead:false
   }
 
   componentDidMount() {
@@ -40,12 +41,12 @@ export class MailApp extends React.Component {
   }
 
 
-  updateMail = (mailId, paramToChange, isUnreadClick) => {
-    mailService.updateMail(mailId, paramToChange, isUnreadClick)
+  updateMail = (mailId, trigger, isUnreadClick) => {
+    mailService.updateMail(mailId, trigger, isUnreadClick)
       .then(() => {
-        if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
+        if (trigger === 'removeMail' && this.state.mailsType === 'trash') {
         }
-        else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
+        else if (trigger === 'removeMail' && this.state.mailsType !== 'trash') {
         }
         this.loadMails()
 

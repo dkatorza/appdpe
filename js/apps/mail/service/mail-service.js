@@ -292,12 +292,12 @@ function moveMailToTrash(mailId) {
         )
 }
 
-function markedMailasStarred(mailId, paramToChange){
+function markedMailasStarred(mailId, trigger){
     return getIdxById(mailId)
     .then ((mailIdx) => query()
         .then(mails => {
             var currMail=mails[mailIdx]
-            if (paramToChange === 'toggleStar') {
+            if (trigger === 'toggleStar') {
                 currMail.isStarred = !currMail.isStarred;
             }
             storageService.saveToStorage(KEY, mails)
@@ -308,22 +308,22 @@ function markedMailasStarred(mailId, paramToChange){
 
 }
 
-function updateMail(mailId, paramToChange, isUnReadClick) {
+function updateMail(mailId, trigger,isUnReadClick = true) {
     return getIdxById(mailId)
         .then((mailIdx) => query()
             .then(mails => {
                 var currMail = mails[mailIdx]
-                if (paramToChange === 'toggleStar') {
+                if (trigger === 'toggleStar') {
                     currMail.isStarred = !currMail.isStarred;
                 }
-                if (paramToChange === 'removeMail') {
+                if (trigger === 'removeMail') {
                     if (currMail.status === 'trash') mails = mails.filter(mail => mail.id !== mailId);
                     else currMail.status = 'trash';
                 }
-                if (paramToChange === 'setRead') {
-                    currMail.isRead = !currMail.isRead
+                else if (trigger === 'setRead') {
+                    currMail.isRead = isUnReadClick;
                 }
-                else if (paramToChange === 'setImportance') {
+                else if (trigger === 'setImportance') {
                     currMail.isImportant = !currMail.isImportant
                 }
                 storageService.saveToStorage(KEY, mails)

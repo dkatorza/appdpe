@@ -27,8 +27,8 @@ export class MailDetails extends React.Component {
             })
     }
 
-    markedMailasStarred = (mailId, paramToChange) => {
-        mailService.markedMailasStarred(mailId, paramToChange)
+    markedMailasStarred = (mailId, trigger) => {
+        mailService.markedMailasStarred(mailId, trigger)
             .then(() => {
                 this.loadMail()
             })
