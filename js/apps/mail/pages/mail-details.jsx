@@ -6,7 +6,7 @@ import { SideBar } from '../../mail/cmps/sideBar.jsx'
 export class MailDetails extends React.Component {
 
     state = {
-        mail: null
+        mail: null,
     }
 
     componentDidMount() {
@@ -19,10 +19,20 @@ export class MailDetails extends React.Component {
             .then(mail => this.setState({ mail }))
     }
 
-    // toggleLongText = () => {
-    //     const isLongTxtShown = !this.state.isLongTxtShown
-    //     this.setState({ isLongTxtShown })
-    // }
+
+    moveMailToTrash = (mailId) => {
+        mailService.moveMailToTrash(mailId)
+            .then(() => {
+                this.props.history.push('/mail')
+            })
+    }
+
+    markedMailasStarred = (mailId, paramToChange) => {
+        mailService.markedMailasStarred(mailId, paramToChange)
+            .then(() => {
+                this.loadMail()
+            })
+    }
 
     changeMailSection = (section) => {
         this.props.history.push(`/mail?&section=${section}`)
@@ -41,7 +51,10 @@ export class MailDetails extends React.Component {
                     </div>
                     <h3>Sender: {mail.address}</h3>
                     <p>{mail.body}</p>
-                    <button className="back-btn" onClick={() => this.props.history.push('/mail')}><i className="fas fa-arrow-left"></i> Back to inbox</button>
+                    <button title="Back" className="back-btn" onClick={() => this.props.history.push('/mail')}><i className="fas fa-arrow-left"></i> Back to inbox</button>
+                    <button title="Move to trash" onClick={() => this.moveMailToTrash(mail.id)}> <i className="fas fa-trash "></i> </button>
+                    <button title="Mark as starred" className="star-btn" onClick={() => this.markedMailasStarred(mail.id, 'toggleStar')}> <i className={`${mail.isStarred ? 'fav-star-starred fas fa-star' : 'fav-star far fa-star'}`} ></i>
+                    </button>
                 </div>
             </div>
         )

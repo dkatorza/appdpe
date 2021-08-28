@@ -13,7 +13,7 @@ export class MailApp extends React.Component {
     mailsType: '',
     isComposeShown: false,
     unreadMailAmount: '',
-    filterBy: '', // if time permits add option to filter also by subject/ body content /date
+    filterBy: '', 
     filterStatus: 'All'
   }
 
@@ -44,10 +44,8 @@ export class MailApp extends React.Component {
     mailService.updateMail(mailId, paramToChange, isUnreadClick)
       .then(() => {
         if (paramToChange === 'removeMail' && this.state.mailsType === 'trash') {
-          // eventBus.emit('notify', { msg: 'Mail have been removed' })
         }
         else if (paramToChange === 'removeMail' && this.state.mailsType !== 'trash') {
-          // eventBus.emit('notify', { msg: 'Moved to trash' })
         }
         this.loadMails()
 

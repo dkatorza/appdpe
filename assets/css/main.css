@@ -252,18 +252,25 @@ color: red;
 .main-nav {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
     
 }
-.nav-links {
+.nav-links  {
     gap: 5px;
     display: flex;
     font-family: 'Poppins', sans-serif;
+    margin-right: 20px;
+}
+.nav-links a {
+   text-decoration: none;
 }
 
 
 .main-nav img{
     width: 65px;
     height: 58px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 /* END NAV */
 
@@ -294,8 +301,9 @@ button {
     margin-right: 5px;
     border-radius: 10px;
     padding: 7px;
+    transition: .2s;
     outline: none;
-    transition: .3s;
+    
 }
 
 .mail-filter input:focus {
@@ -305,14 +313,17 @@ button {
 
 
 
+
 .mail-filter .radio-sort {
     padding: 6px;
     font-size: 1.05rem;
     font-family: 'Lato', sans-serif;
+    font-weight: 700;
 }
 
 .label-unread{
     color: rgb(255, 190, 12);
+
     
 }
 
@@ -367,6 +378,7 @@ color: tomato;
 .sub-body-container{
 
     align-items: center;
+    
 }
 
 .sub-body-container h3{
@@ -374,6 +386,9 @@ color: tomato;
     overflow-X: hidden;
     min-height: 25px;
     max-height: 25px;
+    width: 15rem;  
+    white-space: nowrap;
+    text-overflow: ellipsis; 
 }
 
 .mail-preview:hover {
@@ -385,7 +400,7 @@ color: tomato;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 15ch;
+    max-width: 20rem;
 }
 
 .mail-preview div:not(:last-child) {
@@ -449,6 +464,7 @@ color: tomato;
     background-color: #fff;
     height: 100%;
     width: 24%;
+ 
 }
 
 .mail-preview.readen .edit-mail {
@@ -471,7 +487,7 @@ color: tomato;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    right: 0;
+    right: 10px;
 }
 
 
@@ -607,7 +623,7 @@ color: tomato;
 
 }
 
-.mail-data-container button, .mail-data-container a{
+.mail-data-container button:not(.star-btn), .mail-data-container a{
     font-size: 1rem;
     border: none;
     background-color: #1a73e8;
@@ -628,11 +644,7 @@ color: tomato;
 }
 
 
-
 /* END MAIL */
-
-
-/* ICONS */
 
 
 

@@ -45,7 +45,7 @@ export class MailCompose extends React.Component {
                     </div>
 
                     <div className="compose-body flex-1">
-                        <textarea value={this.state.newMail.body} rows="25" type="text" name="body" placeholder="Write your mail here" onChange={this.onInputChange} />
+                        <textarea value={this.state.newMail.body} rows="25" type="text" name="body"  onChange={this.onInputChange} />
                     </div>
                     <section className="compose-footer flex space-between align-center">
                         <button type="submit" title="Send"> Send </button>
