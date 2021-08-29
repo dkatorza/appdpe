@@ -6,7 +6,7 @@ import { MailApp } from './js/apps/mail/pages/MailApp.jsx';
 import { MailDetails } from './js/apps/mail/pages/mail-details.jsx'
 import { KeepApp } from './js/apps/keep/pages/KeepApp.jsx';
 import { BookApp } from './js/apps/book/pages/BookApp.jsx'
-import { BookDetails } from '.js/apps/book/pages/BookDetails.jsx';
+import { BookDetails } from './js/apps/book/pages/BookDetails.jsx';
 import { AppHome } from './js/pages/app-home.jsx';
 
 
